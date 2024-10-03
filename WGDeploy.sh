@@ -36,10 +36,16 @@ wg0_setup()
 
 EOF
 
-    # Enable IP forwarding
-    sysctl -w net.ipv4.ip_forward=1
-    sysctl -w net.ipv6.conf.all.forwarding=1
+    echo "wg0 config file created"
 
+    # Enable IP forwarding
+    cat <<EOF >> /etc/sysctl.conf
+
+     net.ipv4.ip_forward=1
+     net.ipv6.conf.all.forwarding=1
+
+EOF
+    echo "IP forwarding enabled"
 
     echo "wg0 setup complete"
 }

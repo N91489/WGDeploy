@@ -43,11 +43,21 @@ EOF
 
      net.ipv4.ip_forward=1
      net.ipv6.conf.all.forwarding=1
-
+     
 EOF
+    sudo sysctl -p
     echo "IP forwarding enabled"
 
     echo "wg0 setup complete"
+
+    # start wireguard
+    echo "Turning on wg0"
+    wg-quick up wg0
+
+    # set wireguard on boot
+    echo "Start wireguard on boot"
+    systemctl enable wg-quick@wg0
+    
 }
 
 # Function to setup WireGuard client
@@ -104,9 +114,11 @@ EOF
     [Peer]
     PublicKey = $(cat /etc/wireguard/keys/${client}_public.key)
     AllowedIPs = $clientIP/32
+    EndPoint = $(curl -s https://ifconfig.co):$(grep ListenPort /etc/wireguard/wg0.conf | awk '{print $3}')
 
 EOF
     echo "Client setup complete for ${client}"
+    
 }
 
 # Check WireGuard installation

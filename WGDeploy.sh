@@ -86,8 +86,8 @@ client_setup()
     # $client device config
     [Interface]
     PrivateKey = $(cat /etc/wireguard/keys/${client}_private.key)
-    ListenPort = $(grep ListenPort /etc/wireguard/wg0.cong | awk {print $3})
-    MTU = $(grep MTU /etc/wireguard/wg0.cong | awk {print $3})
+    ListenPort = $(grep ListenPort /etc/wireguard/wg0.conf | awk '{print $3}')
+    MTU = $(grep MTU /etc/wireguard/wg0.conf | awk '{print $3}')
     Address = $clientIP/32
     DNS = $dns
 

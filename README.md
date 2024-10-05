@@ -100,6 +100,6 @@ WGDeploy is a bash script designed to automate the process of deploying and mana
      
      - <mtu>: The MTU (Maximum Transmission Unit) defines the largest size of a                  packet that can be sent over the network without fragmentation.
 
-   	**Note**: If you experience connectivity issues or packet loss, adjust 		the MTU.
+   		**Note**: If you experience connectivity issues or packet loss, adjust the MTU.
 
-   This will generate the client configuration and store it in the clients/           directory.
+   This will generate the client configuration and store it in the clients/ directory.

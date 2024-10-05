@@ -17,9 +17,7 @@ WGDeploy is a bash script designed to automate the process of deploying and mana
 
 ## Pre-Installation
 
-1. **Setting up Static External IP**:
-
-  In most cloud environments, it’s recommended to use a static external IP for      your server so the VPN clients can always connect to the same address.
+1. **Setting up Static External IP**:In most cloud environments, it’s recommended to use a static external IP for      your server so the VPN clients can always connect to the same address.
   
    - GCP: Reserve a static external IP for your instance under VPC network >                External IP addresses.
      

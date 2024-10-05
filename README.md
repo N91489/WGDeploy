@@ -60,9 +60,9 @@ WGDeploy is a bash script designed to automate the process of deploying and mana
    1. Server Setup
       To set up the WireGuard server, use the following syntax:
       ```bash
-      sudo ./wgdeploy.sh setup <Server_IP> <Listen_Port> <MTU>
+      sudo ./wgdeploy.sh setup <server_ip> <listen_port> <mtu>
       ```
-      - <Server_IP>: This is the internal IP address that the WireGuard server             will use. You should choose an IP address based on your network setup.
+      - <server_ip>: This is the internal IP address that the WireGuard server             will use. You should choose an IP address based on your network setup.
         
 	      - Common internal IP address ranges:
             - 10.0.0.0        -   10.255.255.255  (10/8 prefix)
@@ -71,7 +71,7 @@ WGDeploy is a bash script designed to automate the process of deploying and mana
 
       **Note**: Ensure the IP address you choose does not conflict with existing          devices on your network.
 
-      - <Listen_Port>: This is the port on which your WireGuard server will 				listen for incoming connections.
+      - <listen_port>: This is the port on which your WireGuard server will 				listen for incoming connections.
 
       	- Common Ports:
            - Default Wireguard port: 51820
@@ -79,7 +79,7 @@ WGDeploy is a bash script designed to automate the process of deploying and mana
          
       **Recommendation**: Stick with the default port 51820 unless you have a             reason to use another port
 
-      - <MTU>: The MTU (Maximum Transmission Unit) defines the largest size of a                  packet that can be sent over the network without fragmentation.
+      - <mtu>: The MTU (Maximum Transmission Unit) defines the largest size of a                  packet that can be sent over the network without fragmentation.
 
      **Note**: If you experience connectivity issues or packet loss, adjust the                   MTU.
   
@@ -89,16 +89,16 @@ WGDeploy is a bash script designed to automate the process of deploying and mana
   
       To generate a configuration for a client, use the following syntax:
       ```bash
-      sudo ./wgdeploy.sh client <Client_Name> <D.N.S> <MTU>
+      sudo ./wgdeploy.sh client <client_name> <D.N.S> <mtu>
       ```
 
-     - <Client_Name>: This is the name of the client you are setting up, which can                       be anything meaningful (e.g., Phone1 or Laptop2 ).
+     - <client_name>: This is the name of the client you are setting up, which can                       be anything meaningful (e.g., Phone1 or Laptop2 ).
        
 	  - <D.N.S>: The DNS server the client will use. Common DNS providers:
 		            - 1.1.1.1 (Cloudflare DNS)
 		            - 8.8.8.8 (Google DNS)
      
-     - <MTU>: The MTU (Maximum Transmission Unit) defines the largest size of a                  packet that can be sent over the network without fragmentation.
+     - <mtu>: The MTU (Maximum Transmission Unit) defines the largest size of a                  packet that can be sent over the network without fragmentation.
 
        **Note**: If you experience connectivity issues or packet loss, adjust the                   MTU.
 

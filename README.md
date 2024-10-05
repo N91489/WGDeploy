@@ -79,7 +79,7 @@ WGDeploy is a bash script designed to automate the process of deploying and mana
          
         **Recommendation**: Stick with the default port 51820 unless you have a             reason to use another port
 
-   - <mtu>: The MTU (Maximum Transmission Unit) defines the largest size of a                  packet that can be sent over the network without fragmentation.
+   - <MTU>: The MTU (Maximum Transmission Unit) defines the largest size of a                  packet that can be sent over the network without fragmentation.
 
      **Note**: If you experience connectivity issues or packet loss, adjust the                   MTU.
   

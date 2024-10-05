@@ -55,7 +55,7 @@ EOF
     wg-quick up wg0
 
     # set wireguard on boot
-    echo "Start wireguard on boot"
+    echo "Set start wireguard on boot"
     systemctl enable wg-quick@wg0
     
 }
@@ -64,13 +64,14 @@ EOF
 client_setup()
 {
     # Check if the correct number of arguments are provided
-    if [[ -z "$2" || -z "$3" ]]; then
-        echo "Usage: $0 client <Client_Name> <DNS>"
+    if [[ -z "$2" || -z "$3" || -z "$4" ]]; then
+        echo "Usage: $0 client <Client_Name> <DNS> <MTU>"
         exit 1
     fi
 
     client=$2
     dns=$3
+    mtu=$4
 
     # Check if AllowedIPs exists
     if grep -q "AllowedIPs" /etc/wireguard/wg0.conf; then
@@ -97,7 +98,7 @@ client_setup()
     [Interface]
     PrivateKey = $(cat /etc/wireguard/keys/${client}_private.key)
     ListenPort = $(grep ListenPort /etc/wireguard/wg0.conf | awk '{print $3}')
-    MTU = $(grep MTU /etc/wireguard/wg0.conf | awk '{print $3}')
+    MTU = $mtu
     Address = $clientIP/32
     DNS = $dns
 
@@ -121,7 +122,7 @@ EOF
     
 }
 
-# Check WireGuard installation
+# Function to check WireGuard installation
 check_wireguard()
 {
     if ! command -v wg &> /dev/null; then
@@ -130,17 +131,28 @@ check_wireguard()
     fi
 }
 
+# Function to check curl installation
+check_curl()
+{
+    if ! command -v curl &> /dev/null; then
+        echo "Curl is not installed. Please install curl first."
+        exit 1
+    fi
+}
+
 # Main script logic
 if [[ $1 == "setup" ]]; then
     check_wireguard
+    check_curl
     wg0_setup "$@"
 elif [[ $1 == "client" ]]; then
     check_wireguard
+    check_curl
     client_setup "$@"
 else
     echo "Usage: $0 <setup> | <client> "
     echo "Commands:"
     echo "  setup <Server_IP_Address> <Listen_Port> <MTU> - Set up the WireGuard server"
-    echo "  client <Client_Name> <DNS> - Add a new WireGuard client"
+    echo "  client <Client_Name> <DNS> <MTU> - Add a new WireGuard client"
     exit 1
 fi

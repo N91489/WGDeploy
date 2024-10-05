@@ -71,15 +71,15 @@ WGDeploy is a bash script designed to automate the process of deploying and mana
 
       **Note**: Ensure the IP address you choose does not conflict with existing          devices on your network.
 
-      - <Listen_Port>: This is the port on which your WireGuard server will listen       for incoming connections.
+      - <Listen_Port>: This is the port on which your WireGuard server will 				listen for incoming connections.
 
-        - Common Ports:
+      	- Common Ports:
            - Default Wireguard port: 51820
            - Other common VPN ports: 1194 (OpenVPN), 500 (IPsec)
          
-        **Recommendation**: Stick with the default port 51820 unless you have a             reason to use another port
+      **Recommendation**: Stick with the default port 51820 unless you have a             reason to use another port
 
-   - <MTU>: The MTU (Maximum Transmission Unit) defines the largest size of a                  packet that can be sent over the network without fragmentation.
+      - <MTU>: The MTU (Maximum Transmission Unit) defines the largest size of a                  packet that can be sent over the network without fragmentation.
 
      **Note**: If you experience connectivity issues or packet loss, adjust the                   MTU.
   

@@ -56,7 +56,8 @@ EOF
 
     # set wireguard on boot
     echo "Set start wireguard on boot"
-    systemctl enable wg-quick@wg0
+    systemctl enable wg-quick@wg0.service
+    systemctl daemon-reload
     
 }
 

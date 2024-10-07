@@ -92,14 +92,15 @@ WGDeploy is a bash script designed to automate the process of deploying and mana
       sudo ./wgdeploy.sh client <client_name> <D.N.S> <mtu>
       ```
 
-     - <client_name>: This is the name of the client you are setting up, which 		can be anything meaningful (e.g., Phone1 or Laptop2 ).
+     - <client_name>: This is the name of the client you are setting up, which can be anything meaningful (e.g., Phone1 or Laptop2 ).
        
      - <D.N.S>: The DNS server the client will use. Common DNS providers:
-		            - 1.1.1.1 (Cloudflare DNS)
-		            - 8.8.8.8 (Google DNS)
+       
+		 - 1.1.1.1 (Cloudflare DNS)
+		 - 8.8.8.8 (Google DNS)
      
      - <mtu>: The MTU (Maximum Transmission Unit) defines the largest size of a                  packet that can be sent over the network without fragmentation.
 
    		**Note**: If you experience connectivity issues or packet loss, adjust the MTU.
 
-   This will generate the client configuration and store it in the clients/ directory.
+   This will generate the client configuration and store it in the ```clients/``` directory.

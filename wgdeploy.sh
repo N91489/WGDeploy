@@ -51,13 +51,13 @@ EOF
     echo "wg0 setup complete"
 
     # start wireguard
-    echo "Turning on wg0"
     wg-quick up wg0
+    echo "Turning on wg0"
 
     # set wireguard on boot
-    echo "Set start wireguard on boot"
     systemctl enable wg-quick@wg0.service
     systemctl daemon-reload
+    echo "Set start wireguard on boot"
     
 }
 
@@ -107,6 +107,7 @@ client_setup()
     [Peer]
     PublicKey = $(cat /etc/wireguard/keys/wg0_public.key)
     AllowedIPs = 0.0.0.0/0
+    EndPoint = $(curl -s http://checkip.amazonaws.com):$(grep ListenPort /etc/wireguard/wg0.conf | awk '{print $3}')
     
 EOF
 
@@ -116,7 +117,6 @@ EOF
     [Peer]
     PublicKey = $(cat /etc/wireguard/keys/${client}_public.key)
     AllowedIPs = $clientIP/32
-    EndPoint = $(curl -s https://ifconfig.co):$(grep ListenPort /etc/wireguard/wg0.conf | awk '{print $3}')
 
 EOF
     echo "Client setup complete for ${client}"
